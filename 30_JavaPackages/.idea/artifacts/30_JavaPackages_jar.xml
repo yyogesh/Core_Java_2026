@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="30_JavaPackages:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/30_JavaPackages_jar</output-path>
+    <root id="archive" name="30_JavaPackages.jar">
+      <element id="module-output" name="30_JavaPackages" />
+    </root>
+  </artifact>
+</component>
