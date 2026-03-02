@@ -47,26 +47,12 @@ namespace SEB.FPE.Web.Security
                 
                 return string.Format(decriptedFromJavascript);
             }
-            catch (FormatException ex)
-            {
-                // Invalid Base64 string
-                //object ErrObj = "Error occur for Decrypting parameter: " + cipherText + " , Employee: NA, MethodName: DecryptStringAES";
-                //Log.Error(ErrObj, ex);
-                return string.Empty;
-            }
-            catch (CryptographicException ex)
-            {
-                // Decryption failed
-                //object ErrObj = "Error occur for Decrypting parameter: " + cipherText + " , Employee: NA, MethodName: DecryptStringAES";
-                //Log.Error(ErrObj, ex);
-                return string.Empty;
-            }
             catch (Exception ex)
             {
                 //object ErrObj = "Error occur for Decrypting parameter: " + cipherText + " , Employee: NA, MethodName: DecryptStringAES";
                 //Log.Error(ErrObj, ex);
-                return string.Empty;
             }
+            return string.Empty;
         }
         public static byte[] EncryptStringAES(string plainText)
         {
@@ -87,7 +73,7 @@ namespace SEB.FPE.Web.Security
             }
             if (iv == null || iv.Length <= 0)
             {
-                throw new ArgumentNullException("iv");
+                throw new ArgumentNullException("key");
             }
 
             // Declare the string used to hold
@@ -149,7 +135,7 @@ namespace SEB.FPE.Web.Security
             }
             if (iv == null || iv.Length <= 0)
             {
-                throw new ArgumentNullException("iv");
+                throw new ArgumentNullException("key");
             }
             byte[] encrypted;
             // Create a RijndaelManaged object

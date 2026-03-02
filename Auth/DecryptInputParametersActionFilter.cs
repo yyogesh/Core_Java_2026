@@ -41,15 +41,10 @@ namespace SEB.FPE.CustomFilters
             {
                 string tokenmemberid = headers["memberid"];
                 MemberDecrypted = AESEncryptDecrypt.DecryptStringAES(tokenmemberid);
-                // If decryption fails and returns empty, keep original value or use query string fallback
-                if (string.IsNullOrEmpty(MemberDecrypted))
-                {
-                    MemberDecrypted = context.HttpContext.Request.Query["memberid"].ToString() ?? string.Empty;
-                }
             }
             else
             {
-                MemberDecrypted = context.HttpContext.Request.Query["memberid"].ToString() ?? string.Empty;
+                MemberDecrypted = context.HttpContext.Request.Query["memberid"].ToString();
             }
 
 
@@ -57,15 +52,10 @@ namespace SEB.FPE.CustomFilters
             {
                 string tokenorganizationid = headers["organizationid"];
                 OrganizationDecrypted = AESEncryptDecrypt.DecryptStringAES(tokenorganizationid);
-                // If decryption fails and returns empty, keep original value or use query string fallback
-                if (string.IsNullOrEmpty(OrganizationDecrypted))
-                {
-                    OrganizationDecrypted = context.HttpContext.Request.Query["organizationid"].ToString() ?? string.Empty;
-                }
             }
             else
             {
-                OrganizationDecrypted = context.HttpContext.Request.Query["organizationid"].ToString() ?? string.Empty;
+                OrganizationDecrypted = context.HttpContext.Request.Query["organizationid"].ToString();
             }
 
 
@@ -73,30 +63,20 @@ namespace SEB.FPE.CustomFilters
             {
                 string tokenplansponserid = headers["plansponserid"];
                 PlansponserDecrypted = AESEncryptDecrypt.DecryptStringAES(tokenplansponserid);
-                // If decryption fails and returns empty, keep original value or use query string fallback
-                if (string.IsNullOrEmpty(PlansponserDecrypted))
-                {
-                    PlansponserDecrypted = context.HttpContext.Request.Query["plansponserid"].ToString() ?? string.Empty;
-                }
             }
             else
             {
-                PlansponserDecrypted = context.HttpContext.Request.Query["plansponserid"].ToString() ?? string.Empty;
+                PlansponserDecrypted = context.HttpContext.Request.Query["plansponserid"].ToString();
             }
 
             if (!String.IsNullOrEmpty(headers["personid"]))
             {
                 string tokenpersonid = headers["personid"];
                 PersonDecrypted = AESEncryptDecrypt.DecryptStringAES(tokenpersonid);
-                // If decryption fails and returns empty, keep original value or use query string fallback
-                if (string.IsNullOrEmpty(PersonDecrypted))
-                {
-                    PersonDecrypted = context.HttpContext.Request.Query["personid"].ToString() ?? string.Empty;
-                }
             }
             else
             {
-                PersonDecrypted = context.HttpContext.Request.Query["personid"].ToString() ?? string.Empty;
+                PersonDecrypted = context.HttpContext.Request.Query["personid"].ToString();
             }
 
 
@@ -191,6 +171,10 @@ namespace SEB.FPE.CustomFilters
             }
             
             base.OnActionExecuting(context);
+
+
+            // base.OnActionExecuting(context);
+
         }
 
         public static object ChangeType(object value, Type conversion)
