@@ -51,8 +51,7 @@ namespace SEB.FPE.CustomFilters
             }
             else
             {
-                var memberidQuery = context.HttpContext.Request.Query["memberid"];
-                MemberDecrypted = memberidQuery.HasValue ? memberidQuery.ToString() : string.Empty;
+                MemberDecrypted = context.HttpContext.Request.Query["memberid"].ToString() ?? string.Empty;
             }
 
 
@@ -64,8 +63,7 @@ namespace SEB.FPE.CustomFilters
             }
             else
             {
-                var organizationidQuery = context.HttpContext.Request.Query["organizationid"];
-                OrganizationDecrypted = organizationidQuery.HasValue ? organizationidQuery.ToString() : string.Empty;
+                OrganizationDecrypted = context.HttpContext.Request.Query["organizationid"].ToString() ?? string.Empty;
             }
 
 
@@ -77,8 +75,7 @@ namespace SEB.FPE.CustomFilters
             }
             else
             {
-                var plansponseridQuery = context.HttpContext.Request.Query["plansponserid"];
-                PlansponserDecrypted = plansponseridQuery.HasValue ? plansponseridQuery.ToString() : string.Empty;
+                PlansponserDecrypted = context.HttpContext.Request.Query["plansponserid"].ToString() ?? string.Empty;
             }
 
             if (!String.IsNullOrEmpty(headers["personid"]))
@@ -89,8 +86,7 @@ namespace SEB.FPE.CustomFilters
             }
             else
             {
-                var personidQuery = context.HttpContext.Request.Query["personid"];
-                PersonDecrypted = personidQuery.HasValue ? personidQuery.ToString() : string.Empty;
+                PersonDecrypted = context.HttpContext.Request.Query["personid"].ToString() ?? string.Empty;
             }
 
             // Validate decrypted values - if decryption was attempted but failed (returned empty), return unauthorized
